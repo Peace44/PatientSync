@@ -1,0 +1,6 @@
+@PatientSync.Server_HostAddress = http://localhost:5269
+
+GET {{PatientSync.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

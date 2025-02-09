@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientSync.Server", "PatientSync.Server\PatientSync.Server.csproj", "{0DB9129C-3B21-462B-BC28-9D37F0600556}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "patientsync.client", "patientsync.client\patientsync.client.esproj", "{05ACE460-20DB-4430-99A2-A30BD1167BEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DB9129C-3B21-462B-BC28-9D37F0600556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB9129C-3B21-462B-BC28-9D37F0600556}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB9129C-3B21-462B-BC28-9D37F0600556}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB9129C-3B21-462B-BC28-9D37F0600556}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05ACE460-20DB-4430-99A2-A30BD1167BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05ACE460-20DB-4430-99A2-A30BD1167BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05ACE460-20DB-4430-99A2-A30BD1167BEC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{05ACE460-20DB-4430-99A2-A30BD1167BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05ACE460-20DB-4430-99A2-A30BD1167BEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05ACE460-20DB-4430-99A2-A30BD1167BEC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
