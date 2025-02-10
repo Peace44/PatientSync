@@ -6,6 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import child_process from 'child_process';
 import { env } from 'process';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 const baseFolder =
     env.APPDATA !== undefined && env.APPDATA !== ''
@@ -40,6 +41,9 @@ const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_H
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [plugin()],
+    build: {
+        sourcemap: true
+    },
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -57,5 +61,10 @@ export default defineConfig({
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
         }
-    }
-})
+    },
+    test: {
+        globals: true,
+        environment: 'jsdom',
+        setupFiles: './src/setupTests.ts',
+    },
+});
