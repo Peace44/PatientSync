@@ -261,9 +261,9 @@ PatientSync is built on a modern, scalable architecture that decouples the backe
 graph TD
     subgraph Backend [ASP.NET Core Server]
         A1[API Endpoints]
-        A2[SignalR Hub\n(PatientHub)]
-        A3[Background Service\n(AlarmUpdateService)]
-        A4[Authentication\n(Cookie / OIDC)]
+        A2[SignalR Hub (PatientHub)]
+        A3[Background Service (AlarmUpdateService)]
+        A4[Authentication (Cookie / OIDC)]
         A1 --> A2
         A1 --> A3
         A1 --> A4
