@@ -170,7 +170,7 @@ PatientSync ensures that data and UI state remain synchronized across multiple b
   ```mermaid
   graph TD
       A[Tab 1: User opens detail dialog] --> B[SignalR Hub receives event]
-      B --> C[Hub broadcasts "OpenPatientDetail" to all user connections]
+      B --> C[Hub broadcasts 'OpenPatientDetail' to all user connections]
       C --> D[Tab 1 updates UI]
       C --> E[Tab 2 updates UI]
       C --> F[Tab 3 updates UI]
@@ -261,9 +261,9 @@ PatientSync is built on a modern, scalable architecture that decouples the backe
 graph TD
     subgraph Backend [ASP.NET Core Server]
         A1[API Endpoints]
-        A2[SignalR Hub<br/>(PatientHub)]
-        A3[Background Service<br/>(AlarmUpdateService)]
-        A4[Authentication<br/>(Cookie / OIDC)]
+        A2[SignalR Hub\n(PatientHub)]
+        A3[Background Service\n(AlarmUpdateService)]
+        A4[Authentication\n(Cookie / OIDC)]
         A1 --> A2
         A1 --> A3
         A1 --> A4
@@ -335,5 +335,3 @@ flowchart TD
 - **Performance and Monitoring:**  
   - Optimize data retrieval and consider caching strategies.
   - Integrate monitoring and logging (e.g., via Serilog) to track performance and diagnose issues in production.
-
----
