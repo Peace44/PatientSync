@@ -1,4 +1,3 @@
-```markdown
 # PatientSync
 
 **PatientSync** is a comprehensive healthcare application developed as part of a software engineering job screening exercise. It combines an ASP.NET Core backend (.NET 8, C#) with a dynamic React front-end (TypeScript, Vite) to manage patient data. Key features include real-time data synchronization via SignalR, user authentication with cookie-based auth (with potential extension to Single Sign-On using OpenID Connect), and a background service that simulates real-time alarm updates.
@@ -338,4 +337,3 @@ flowchart TD
   - Integrate monitoring and logging (e.g., via Serilog) to track performance and diagnose issues in production.
 
 ---
-```
