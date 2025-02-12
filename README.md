@@ -1,6 +1,6 @@
 # PatientSync
 
-**PatientSync** is a comprehensive healthcare application developed as part of a software engineering job screening exercise. It combines an ASP.NET Core backend (.NET 8, C#) with a dynamic React front-end (TypeScript, Vite) to manage patient data. Key features include real-time data synchronization via SignalR, user authentication with cookie-based auth (with potential extension to Single Sign-On using OpenID Connect), and a background service that simulates real-time alarm updates.
+**PatientSync** is a small healthcare app developed as part of a software engineering job screening exercise. It combines an ASP.NET Core backend (.NET 8, C#) with a dynamic React front-end (TypeScript, Vite) to manage patient data. Key features include real-time data synchronization via SignalR, user authentication with cookie-based auth (with potential extension to Single Sign-On using OpenID Connect), and a background service that simulates real-time alarm updates.
 
 ---
 
@@ -210,7 +210,7 @@ For seamless Single Sign-On (SSO) across different web applications, PatientSync
   2. Application A creates a local session using cookie authentication.
   3. When the user accesses Application B, it also redirects to the IdP.
   4. The IdP detects the active session and issues tokens immediately.
-  5. Application B creates its own local session without prompting for credentials—achieving seamless SSO.
+  5. Application B creates its own local session without prompting for credentialsâ€”achieving seamless SSO.
 
 - **Visual Representation:**
 
