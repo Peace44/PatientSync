@@ -7,7 +7,7 @@ namespace PatientSync.Server.Models
     /// </summary>
     public class Parameter
     {
-        public int ID { get; set; } // Unique identifier for the parameter.
+        public int? ID { get; set; } // Unique identifier for the parameter.
 
 
 
@@ -22,6 +22,7 @@ namespace PatientSync.Server.Models
 
 
 
+        [Required(ErrorMessage = "PARAMETER ALARM IS REQUIRED!")]
         public bool Alarm { get; set; } // Indicates whether this parameter is in alarm state.
     }
 }

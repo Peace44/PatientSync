@@ -11,7 +11,7 @@ namespace PatientSync.Server.Models
     /// </summary>
     public class Patient
     {
-        public int ID { get; set; } // Unique identifier for the patient.
+        public int? ID { get; set; } // Unique identifier for the patient.
 
 
 

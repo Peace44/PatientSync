@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "https://localhost:7218",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -12,10 +13,12 @@
   },
   "dependencies": {
     "@microsoft/signalr": "^8.0.7",
+    "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "loglevel": "^1.9.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

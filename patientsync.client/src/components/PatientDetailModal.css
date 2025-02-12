@@ -1,0 +1,126 @@
+﻿/* Modal Background Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+}
+
+/* Modal Container */
+.modal-content {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Header */
+.modal-header {
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+    .modal-header h3 {
+        margin: 0;
+        font-size: 22px;
+        color: #222;
+        font-weight: bold;
+    }
+
+/* Body Styling */
+.modal-body {
+    text-align: left;
+    font-size: 16px;
+    color: #444;
+}
+
+    /* Patient Details */
+    .modal-body p {
+        margin: 10px 0;
+        font-weight: 500;
+    }
+
+/* Table Styling */
+.modal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+    /* Table Header */
+    .modal-table th {
+        background: linear-gradient(120deg, #007bff, #0056b3);
+        color: white;
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* Table Cells */
+    .modal-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        font-size: 14px;
+        color: #333;
+    }
+
+/* Alarm-Based Row Colors */
+.alarm-true {
+    background-color: rgba(255, 99, 71, 0.2); /* Light red */
+    color: #d9534f; /* Darker red text */
+    font-weight: bold;
+}
+
+.alarm-false {
+    background-color: rgba(50, 205, 50, 0.2); /* Light green */
+    color: #228B22; /* Darker green text */
+    font-weight: bold;
+}
+
+/* Close Button */
+.modal-close-button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: linear-gradient(120deg, #007bff, #0056b3);
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
+    text-align: center;
+}
+
+    .modal-close-button:hover {
+        background: linear-gradient(120deg, #0056b3, #004494);
+        transform: scale(1.05);
+    }
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

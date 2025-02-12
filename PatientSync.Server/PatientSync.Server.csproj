@@ -27,7 +27,12 @@
 
   <ItemGroup>
     <Folder Include="Logs\" />
-    <Folder Include="Utilities\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\patientsync.client\dist\assets\index-DI3sjeQJ.js" Link="index-DI3sjeQJ.js" />
+    <None Include="..\patientsync.client\dist\assets\index-DI3sjeQJ.js.map" Link="index-DI3sjeQJ.js.map" />
   </ItemGroup>
 
 </Project>

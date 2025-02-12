@@ -1,0 +1,32 @@
+.table {
+    margin-top: 10px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-header {
+    border: 1px solid #ccc;
+    padding: 8px;
+    background-color: royalblue;
+    text-align: left;
+    color: black;
+}
+
+.table-cell {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.table-row {
+    cursor: pointer;
+}
+
+.alarm-label {
+    color: red;
+    font-weight: bold;
+}
+
+.ok-label {
+    color: lightgreen;
+    font-weight: bold;
+}

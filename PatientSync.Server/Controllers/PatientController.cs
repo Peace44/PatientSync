@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using PatientSync.Server.Models;
 using PatientSync.Server.Services;
+using Serilog;
 
 namespace PatientSync.Server.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class PatientController : ControllerBase
     {
         private readonly IPatientService _patientService;
@@ -16,15 +17,15 @@ namespace PatientSync.Server.Controllers
             _patientService = patientService;
         }
 
-
-
         // --- Patient Endpoints --- //
-        
+
         // GET: api/patient
         [HttpGet]
         public ActionResult<IEnumerable<Patient>> GetAllPatients()
         {
+            Log.Information("Getting all patients");
             var patients = _patientService.GetAllPatients();
+            Log.Information("Retrieved {PatientCount} patients", patients.Count());
             return Ok(patients);
         }
 
@@ -32,11 +33,14 @@ namespace PatientSync.Server.Controllers
         [HttpGet("{id}")]
         public ActionResult<Patient> GetPatientById(int id)
         {
+            Log.Information("Getting patient with ID {PatientId}", id);
             var patient = _patientService.GetPatientById(id);
             if (patient == null)
             {
+                Log.Warning("Patient with ID {PatientId} not found", id);
                 return NotFound();
             }
+            Log.Information("Retrieved patient with ID {PatientId}", id);
             return Ok(patient);
         }
 
@@ -44,7 +48,9 @@ namespace PatientSync.Server.Controllers
         [HttpPost]
         public ActionResult AddPatient([FromBody] Patient patient)
         {
+            Log.Information("Adding new patient");
             _patientService.AddPatient(patient);
+            Log.Information("Added patient with ID {PatientId}", patient.ID);
             return CreatedAtAction(nameof(GetPatientById), new { id = patient.ID }, patient);
         }
 
@@ -54,14 +60,18 @@ namespace PatientSync.Server.Controllers
         {
             if (id != patient.ID)
             {
+                Log.Warning("Patient ID mismatch: {PatientId} != {BodyPatientId}", id, patient.ID);
                 return BadRequest("Patient ID mismatch");
             }
             var existing = _patientService.GetPatientById(id);
             if (existing == null)
             {
+                Log.Warning("Patient with ID {PatientId} not found", id);
                 return NotFound();
             }
+            Log.Information("Updating patient with ID {PatientId}", id);
             _patientService.UpdatePatient(patient);
+            Log.Information("Updated patient with ID {PatientId}", id);
             return NoContent();
         }
 
@@ -69,18 +79,17 @@ namespace PatientSync.Server.Controllers
         [HttpDelete("{id}")]
         public ActionResult DeletePatient(int id)
         {
+            Log.Information("Deleting patient with ID {PatientId}", id);
             var patient = _patientService.GetPatientById(id);
             if (patient == null)
             {
+                Log.Warning("Patient with ID {PatientId} not found", id);
                 return NotFound();
             }
             _patientService.DeletePatient(id);
+            Log.Information("Deleted patient with ID {PatientId}", id);
             return NoContent();
         }
-
-
-
-
 
         // --- Parameter Endpoints for a Specific Patient --- //
 
@@ -88,7 +97,9 @@ namespace PatientSync.Server.Controllers
         [HttpGet("{patientId}/parameters")]
         public ActionResult<IEnumerable<Parameter>> GetParametersForPatient(int patientId)
         {
+            Log.Information("Getting parameters for patient with ID {PatientId}", patientId);
             var parameters = _patientService.GetParametersForPatient(patientId);
+            Log.Information("Retrieved {ParameterCount} parameters for patient with ID {PatientId}", parameters.Count(), patientId);
             return Ok(parameters);
         }
 
@@ -96,11 +107,14 @@ namespace PatientSync.Server.Controllers
         [HttpGet("{patientId}/parameters/{parameterId}")]
         public ActionResult<Parameter> GetParameterById(int patientId, int parameterId)
         {
+            Log.Information("Getting parameter with ID {ParameterId} for patient with ID {PatientId}", parameterId, patientId);
             var parameter = _patientService.GetParameterById(patientId, parameterId);
             if (parameter == null)
             {
+                Log.Warning("Parameter with ID {ParameterId} for patient with ID {PatientId} not found", parameterId, patientId);
                 return NotFound();
             }
+            Log.Information("Retrieved parameter with ID {ParameterId} for patient with ID {PatientId}", parameterId, patientId);
             return Ok(parameter);
         }
 
@@ -108,7 +122,9 @@ namespace PatientSync.Server.Controllers
         [HttpPost("{patientId}/parameters")]
         public ActionResult AddParameterToPatient(int patientId, [FromBody] Parameter parameter)
         {
+            Log.Information("Adding parameter to patient with ID {PatientId}", patientId);
             _patientService.AddParameterToPatient(patientId, parameter);
+            Log.Information("Added parameter with ID {ParameterId} to patient with ID {PatientId}", parameter.ID, patientId);
             return CreatedAtAction(nameof(GetParameterById), new { patientId, parameterId = parameter.ID }, parameter);
         }
 
@@ -118,14 +134,18 @@ namespace PatientSync.Server.Controllers
         {
             if (parameterId != parameter.ID)
             {
+                Log.Warning("Parameter ID mismatch: {ParameterId} != {BodyParameterId}", parameterId, parameter.ID);
                 return BadRequest("Parameter ID mismatch");
             }
             var existing = _patientService.GetParameterById(patientId, parameterId);
             if (existing == null)
             {
+                Log.Warning("Parameter with ID {ParameterId} for patient with ID {PatientId} not found", parameterId, patientId);
                 return NotFound();
             }
+            Log.Information("Updating parameter with ID {ParameterId} for patient with ID {PatientId}", parameterId, patientId);
             _patientService.UpdateParameterForPatient(patientId, parameter);
+            Log.Information("Updated parameter with ID {ParameterId} for patient with ID {PatientId}", parameterId, patientId);
             return NoContent();
         }
 
@@ -133,12 +153,15 @@ namespace PatientSync.Server.Controllers
         [HttpDelete("{patientId}/parameters/{parameterId}")]
         public ActionResult DeleteParameterFromPatient(int patientId, int parameterId)
         {
+            Log.Information("Deleting parameter with ID {ParameterId} from patient with ID {PatientId}", parameterId, patientId);
             var parameter = _patientService.GetParameterById(patientId, parameterId);
             if (parameter == null)
             {
+                Log.Warning("Parameter with ID {ParameterId} for patient with ID {PatientId} not found", parameterId, patientId);
                 return NotFound();
             }
             _patientService.DeleteParameterFromPatient(patientId, parameterId);
+            Log.Information("Deleted parameter with ID {ParameterId} from patient with ID {PatientId}", parameterId, patientId);
             return NoContent();
         }
     }

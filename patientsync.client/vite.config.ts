@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import child_process from 'child_process';
 import { env } from 'process';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
+// import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 const baseFolder =
     env.APPDATA !== undefined && env.APPDATA !== ''
@@ -51,20 +51,39 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/weatherforecast': {
+            '^/authentication': {
                 target,
+                changeOrigin: true,
                 secure: false
-            }
+            },
+            '^/user': {
+                target,
+                changeOrigin: true,
+                secure: false
+            },
+            '^/patient': {
+                target,
+                changeOrigin: true,
+                secure: false
+            },
+            '^/patientHub': {
+                target,
+                changeOrigin: true,
+                secure: false,
+                ws: true,
+            },
+
         },
+        open: true,
         port: 59052,
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
         }
     },
-    test: {
-        globals: true,
-        environment: 'jsdom',
-        setupFiles: './src/setupTests.ts',
-    },
+    //test: {
+    //    globals: true,
+    //    environment: 'jsdom',
+    //    setupFiles: './src/setupTests.ts',
+    //},
 });
